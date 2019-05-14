@@ -1,0 +1,50 @@
+.formCont {
+	margin-top: 2%;
+	.postForm {
+		.postTitleCont {
+			display: flex;
+			flex-wrap:  wrap;
+			.postTitle {
+				width: 80px;
+				font-weight: bold;
+			}
+			#title {
+				width: 500px;
+				margin-bottom: 15px;
+				border-radius: 7px;
+			}
+		}
+		.bodyCont {
+			display: flex;
+			flex-wrap:  wrap;
+			.postBody {
+				width: 80px;
+				font-weight: bold;
+			}
+			#body {
+				width: 500px;
+				border-radius: 7px;
+			}
+		}
+	}
+}
+
+button {
+	width: 507px;
+	margin-top: 15px;
+	margin-left: 80px;
+	height: 30px;
+	border-radius: 7px;
+	background-color: #3B3E69; 
+	color: white;
+	border: none;
+	font-size: 20px;
+	font-weight: bold;
+
+	&:hover {
+		cursor: pointer;
+		background-color: white;
+		border: 2px solid #3B3E69;
+		color: #3B3E69;
+	}
+}

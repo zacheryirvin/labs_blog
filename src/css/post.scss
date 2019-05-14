@@ -1,0 +1,36 @@
+a {
+	text-decoration: none;
+	color: #050B59;
+}
+
+.postCont {
+	border: 2px solid #3B3E69;
+	border-radius: 7px;
+	width: 580px;
+	margin-top: 2%;
+
+	&:hover {
+	background-color: #F7F7FD;
+	}
+
+	.marginCont {
+		margin-left: 2%;
+
+		.delete {
+			border: 1px solid #3B3E69;
+			border-radius: 7px;
+			width: 100px;
+			text-align: center;
+
+			&:hover {
+				background-color: red;
+				cursor: pointer;
+			}
+		}
+
+		.title {
+			text-decoration: underline;
+		}
+	}
+}
+
