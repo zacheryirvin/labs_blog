@@ -8,7 +8,7 @@ import "../css/index.scss";
 
 const LoginForm = () => {
   const [inputs, setInputs] = useState({ username: "", password: "" });
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(window.localStorage.getItem("token"));
 
   const handleChange = e => {
     const text = e.target.value;
@@ -25,7 +25,7 @@ const LoginForm = () => {
         "https://labs-blog.herokuapp.com/login",
         inputs
       );
-      localStorage.setItem("token", token.data.token);
+      window.localStorage.setItem("token", token.data.token);
       setInputs({ ...inputs, username: "", password: "" });
       setToken({ token: token.data.token });
     } catch (err) {

@@ -7,12 +7,12 @@ import "../css/index.scss";
 import "../css/post.scss";
 
 const Post = ({ data }) => {
-  const token = localStorage.getItem("token");
+  const token = window.localStorage.getItem("token");
   const post = data.postgres.postById;
   const handleDelete = async e => {
     e.preventDefault();
     try {
-      const headers = { authorize: localStorage.getItem("token") };
+      const headers = { authorize: window.localStorage.getItem("token") };
       await axios.delete(`https://labs-blog.herokuapp.com/post/${post.id}`, {
         headers: headers
       });
@@ -35,7 +35,7 @@ const Post = ({ data }) => {
           <p className="body">{post.body}</p>
         </div>
       </div>
-      {localStorage.getItem("token") ? (
+      {window.localStorage.getItem("token") ? (
         <EditForm id={post.id} title={post.title} body={post.body} />
       ) : null}
     </div>

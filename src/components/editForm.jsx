@@ -20,7 +20,7 @@ const EditForm = props => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const headers = { authorize: localStorage.getItem("token") };
+      const headers = { authorize: window.localStorage.getItem("token") };
       const editPost = await axios.put(
         `https://labs-blog.herokuapp.com/post/${props.id}`,
         inputs,

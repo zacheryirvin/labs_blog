@@ -3,9 +3,9 @@ import { Link } from "gatsby";
 import "../css/header.scss";
 
 const Header = props => {
-  const token = localStorage.getItem("token");
+  const token = window.localStorage.getItem("token");
   const logout = () => {
-    localStorage.removeItem("token");
+    window.localStorage.removeItem("token");
   };
   return (
     <div className="cont">
