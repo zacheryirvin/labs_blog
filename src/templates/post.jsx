@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { graphql, Link } from "gatsby";
+import React, { useState, useEffect } from "react";
+import { graphql } from "gatsby";
 import Header from "../components/header.jsx";
 import axios from "axios";
 import EditForm from "../components/editForm.jsx";
@@ -7,6 +7,10 @@ import "../css/index.scss";
 import "../css/post.scss";
 
 const Post = ({ data }) => {
+  const [token, setToken] = useState();
+  useEffect(() => {
+    setToken(window.localStorage.getItem("token"));
+  });
   const post = data.postgres.postById;
   const handleDelete = async e => {
     e.preventDefault();
@@ -22,12 +26,11 @@ const Post = ({ data }) => {
     }
   };
   return (
-    <div class="indexCont">
+    <div className="indexCont">
       <Header />
       <div className="postCont">
         <div className="marginCont">
-          {typeof window !== undefined &&
-          window.localStorage.getItem("token") ? (
+          {token ? (
             <h4 className="delete" onClick={handleDelete}>
               Delete
             </h4>
