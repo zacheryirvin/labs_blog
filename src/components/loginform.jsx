@@ -9,11 +9,10 @@ const LoginForm = () => {
   const [inputs, setInputs] = useState({ username: "", password: "" });
   const [token, setToken] = useState();
 
-  if (
-    typeof window !== undefined &&
-    token !== window.localStorage.getItem("token")
-  ) {
-    setToken(window.localStorage.getItem("token"));
+  if (typeof window !== undefined) {
+    if (token !== window.localStorage.getItem("token")) {
+      setToken(window.localStorage.getItem("token"));
+    }
   }
 
   const handleChange = e => {
