@@ -26,7 +26,8 @@ const Post = ({ data }) => {
       <Header />
       <div className="postCont">
         <div className="marginCont">
-          {token ? (
+          {typeof window !== undefined &&
+          window.localStorage.getItem("token") ? (
             <h4 className="delete" onClick={handleDelete}>
               Delete
             </h4>
