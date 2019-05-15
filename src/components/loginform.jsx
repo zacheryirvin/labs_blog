@@ -2,13 +2,19 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import Header from "./header.jsx";
-import { Link } from "gatsby";
 import "../css/login.scss";
 import "../css/index.scss";
 
 const LoginForm = () => {
   const [inputs, setInputs] = useState({ username: "", password: "" });
-  const [token, setToken] = useState(window.localStorage.getItem("token"));
+  const [token, setToken] = useState();
+
+  if (
+    typeof window !== undefined &&
+    token !== window.localStorage.getItem("token")
+  ) {
+    setToken(window.localStorage.getItem("token"));
+  }
 
   const handleChange = e => {
     const text = e.target.value;
@@ -25,9 +31,11 @@ const LoginForm = () => {
         "https://labs-blog.herokuapp.com/login",
         inputs
       );
-      window.localStorage.setItem("token", token.data.token);
+      if (typeof window !== undefined) {
+        window.localStorage.setItem("token", token.data.token);
+        setToken({ token: token.data.token });
+      }
       setInputs({ ...inputs, username: "", password: "" });
-      setToken({ token: token.data.token });
     } catch (err) {
       console.log(err.response);
     }

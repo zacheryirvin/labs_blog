@@ -20,16 +20,18 @@ const Form = props => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    try {
-      const headers = { authorize: window.localStorage.getItem("token") };
-      const newPost = await axios.post(
-        "https://labs-blog.herokuapp.com/newPost",
-        inputs,
-        { headers: headers }
-      );
-      setInputs({ ...inputs, body: "", title: "" });
-    } catch (err) {
-      console.log(err.response);
+    if (typeof window !== undefined) {
+      try {
+        const headers = { authorize: window.localStorage.getItem("token") };
+        const newPost = await axios.post(
+          "https://labs-blog.herokuapp.com/newPost",
+          inputs,
+          { headers: headers }
+        );
+        setInputs({ ...inputs, body: "", title: "" });
+      } catch (err) {
+        console.log(err.response);
+      }
     }
   };
   return (

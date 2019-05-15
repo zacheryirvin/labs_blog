@@ -19,16 +19,18 @@ const EditForm = props => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    try {
-      const headers = { authorize: window.localStorage.getItem("token") };
-      const editPost = await axios.put(
-        `https://labs-blog.herokuapp.com/post/${props.id}`,
-        inputs,
-        { headers: headers }
-      );
-      setInputs({ ...inputs, body: "", title: "" });
-    } catch (err) {
-      console.log(err.response);
+    if (typeof window !== undefined) {
+      try {
+        const headers = { authorize: window.localStorage.getItem("token") };
+        const editPost = await axios.put(
+          `https://labs-blog.herokuapp.com/post/${props.id}`,
+          inputs,
+          { headers: headers }
+        );
+        setInputs({ ...inputs, body: "", title: "" });
+      } catch (err) {
+        console.log(err.response);
+      }
     }
   };
   return (

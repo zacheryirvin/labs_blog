@@ -3,9 +3,10 @@ import { Link } from "gatsby";
 import "../css/header.scss";
 
 const Header = props => {
-  const token = window.localStorage.getItem("token");
   const logout = () => {
-    window.localStorage.removeItem("token");
+    if (typeof window !== undefined) {
+      window.localStorage.removeItem("token");
+    }
   };
   return (
     <div className="cont">

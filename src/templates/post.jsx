@@ -7,17 +7,18 @@ import "../css/index.scss";
 import "../css/post.scss";
 
 const Post = ({ data }) => {
-  const token = window.localStorage.getItem("token");
   const post = data.postgres.postById;
   const handleDelete = async e => {
     e.preventDefault();
-    try {
-      const headers = { authorize: window.localStorage.getItem("token") };
-      await axios.delete(`https://labs-blog.herokuapp.com/post/${post.id}`, {
-        headers: headers
-      });
-    } catch (err) {
-      console.log(err.response);
+    if (typeof window !== undefined) {
+      try {
+        const headers = { authorize: window.localStorage.getItem("token") };
+        await axios.delete(`https://labs-blog.herokuapp.com/post/${post.id}`, {
+          headers: headers
+        });
+      } catch (err) {
+        console.log(err.response);
+      }
     }
   };
   return (
