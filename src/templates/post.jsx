@@ -40,7 +40,7 @@ const Post = ({ data }) => {
           <p className="body">{post.body}</p>
         </div>
       </div>
-      {window.localStorage.getItem("token") ? (
+      {token ? (
         <EditForm id={post.id} title={post.title} body={post.body} />
       ) : null}
     </div>
