@@ -10,8 +10,7 @@ const LoginForm = () => {
   const [token, setToken] = useState();
 
   if (typeof window !== undefined) {
-      setToken(window.localStorage.getItem("token"));
-    }
+    setToken(window.localStorage.getItem("token"));
   }
 
   const handleChange = e => {
