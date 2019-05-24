@@ -5,4 +5,15 @@ margin-right: 2%;
 		display: flex;
 		flex-wrap: wrap;
 	}
+	.pageLinks {
+		display: flex;
+		width: 583px;
+		justify-content: center;
+
+		a {
+			padding-left: 15px;
+			padding-top: 10px;
+			font-size: 1.3rem;
+		}
+	}
 }

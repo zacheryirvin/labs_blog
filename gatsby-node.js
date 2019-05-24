@@ -7,6 +7,7 @@
 // You can delete this file if you're not using it
 
 const path = require("path");
+const createPaginatedPages = require("gatsby-paginate");
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -25,6 +26,12 @@ exports.createPages = ({ graphql, actions }) => {
       }
     `)
       .then(res => {
+        createPaginatedPages({
+          edges: res.data.postgres.allPosts.edges,
+          createPage: createPage,
+          pageTemplate: "src/templates/index.jsx",
+          pageLength: 5
+        });
         res.data.postgres.allPosts.edges.forEach(({ node }) => {
           createPage({
             path: `/post/${node.id}`,
